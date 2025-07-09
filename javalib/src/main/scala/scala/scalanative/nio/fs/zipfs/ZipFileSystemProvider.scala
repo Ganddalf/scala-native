@@ -22,11 +22,13 @@ import java.net.URI
 
 class ZipFileSystemProvider extends FileSystemProvider {
 
-  override def getScheme(): String = ???
+  protected lazy val fs: FileSystem = new ZipFileSystem(this)
 
-  override def newFileSystem(uri: URI, env: Map[String, _]): FileSystem = ???
+  override def getScheme(): String = "jar"
 
-  override def getFileSystem(uri: URI): FileSystem = ???
+  override def newFileSystem(uri: URI, env: Map[String, _]): FileSystem = fs
+
+  override def getFileSystem(uri: URI): FileSystem = fs
 
   override def getPath(uri: URI): Path = ???
 

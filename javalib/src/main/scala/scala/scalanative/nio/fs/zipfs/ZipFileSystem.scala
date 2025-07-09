@@ -10,7 +10,7 @@ import java.{util => ju}
 import java.nio.file.attribute.UserPrincipalLookupService
 import java.nio.file.FileStore
 
-class ZipFileSystem() extends FileSystem {
+class ZipFileSystem(fsProvider: FileSystemProvider) extends FileSystem {
 
   override def newWatchService(): WatchService = ???
 
@@ -26,7 +26,7 @@ class ZipFileSystem() extends FileSystem {
 
   override def getUserPrincipalLookupService(): UserPrincipalLookupService = ???
 
-  override def provider(): FileSystemProvider = ???
+  override def provider(): FileSystemProvider = fsProvider
 
   override def getFileStores(): java.lang.Iterable[FileStore] = ???
 
